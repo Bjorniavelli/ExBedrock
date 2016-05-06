@@ -1,0 +1,22 @@
+Ex Bedrockium
+
+Overview:
+
+Bedrock blocks act as a ompressed neutronium star type material.  Everything from the thousands of Minecraft days that's ever fallen into the void is compressed into single blocks.  They're a treasure trove of resources!  If only there were some way to mine them, and chip out the bits and pieces.
+
+Mechanics:
+
+When you find a bedrock block, it can be mined by the player.  Eventually, it can be automated using a series of machines.  The bedrock can be mined, but it won't disappear.  Configs should be setup to delineate what tiers of mining material result in which results.  For example, punching the bedrock might chip off a stick or a plank of wood, wood tools might result in stone, stone might result in iron, etc.  Different methods should exist for interacting with the bedrock.  Configs should allow the different methods to be enabled or disabled.  There should be ways to affect the method of mining the bedrock.
+
+Mining Methods:
+
+Initially, there should be four methods of mining: Vanilla, tech, magic, and nature.  Vanilla methods involve hitting it with a pickaxe (or maybe a hoe, or a shovel, etc for different types of materials?).  Tech methods might involve a mining drill of some sort set up in a machine adjacent to the bedrock.  Magic methods involve shooting a beam of some sort at the bedrock, or environmental ritual-type effects that are centered on the bedrock.  Nature methods involve planting on top (sides? Bottom?) of the bedrock in order to coax its stored resources into a fruiting form.
+
+Manipulation:
+
+Bedrock should be manipulatable in some form.  While not craftable, there should be a mechanic for mining it.  For example, a bedrock buster item that removes a block of bedrock.  A bedrock miner that returns the block of bedrock.  And potentially a bedrock compressor that compresses multiple bedrock into a single block in order to make mining it more efficient.
+
+Other ideas:
+
+Fluid Bedrock - It flows very slowly, and all the flowing blocks are solid, unable to be passed through.  Potentially allowing a sluice or a sieve or an alchemical construct to filter out useful liquids or other products.
+
