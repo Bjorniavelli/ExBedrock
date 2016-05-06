@@ -1,5 +1,6 @@
 package com.bjorniavelli.exbedrock.listener;
 
+import com.bjorniavelli.exbedrock.ExBedrock;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -27,7 +28,7 @@ public class BedrockListener
         Block b = state.getBlock();
         // This should be dropped to a config.
         // Then modpack makers can choose which block gives items
-        if (b != Block.getBlockFromName("minecraft:bedrock"))
+        if (b != ExBedrock.exBlock)
         {
             return;
         }
