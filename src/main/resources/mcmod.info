@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "exbedrock",
+  "name": "Ex Bedrock",
+  "description": "Skyblock from Bedrock",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Bjorniavelli"],
+  "credits": "Cricket.  Because he rocks.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
