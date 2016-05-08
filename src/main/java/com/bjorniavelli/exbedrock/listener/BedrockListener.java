@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -62,13 +63,51 @@ public class BedrockListener
     {
         if (tool == null)
         {
-            return RandomItemStack (ExBedrock.exHandDrops[0]);
+            return RandomItemStack (ExBedrock.exToolDrops[0]);
         }
+
+        // Doing it this way is the way to go for vanilla modding...
+        // but how to I extend it to play nicely with other mods?
+        // Also, maybe a switch would be better?
+        // Either way, there's lots of repetitive code here...
+
+        if (tool.getItem() == Items.diamond_pickaxe)
+//        if (tool.canHarvestBlock(Blocks.obsidian))
+        {
+            return RandomItemStack(ExBedrock.exPickDrops[3]);
+        }
+
+        if (tool.getItem() == Items.iron_pickaxe)
+//        if (tool.canHarvestBlock(Blocks.diamond_ore))
+        {
+            return RandomItemStack(ExBedrock.exPickDrops[2]);
+        }
+
+        if (tool.getItem() == Items.stone_pickaxe)
+//        if (tool.canHarvestBlock(Blocks.iron_ore))
+        {
+            return RandomItemStack(ExBedrock.exPickDrops[1]);
+        }
+
+        if (tool.getItem() == Items.wooden_pickaxe)
+//        if (tool.canHarvestBlock(Blocks.cobblestone))
+        {
+            return RandomItemStack(ExBedrock.exPickDrops[0]);
+        }
+
+        if (tool.getItem() == Items.wooden_axe)
+//        if (tool.canHarvestBlock(Blocks.log))
+        {
+            return RandomItemStack(ExBedrock.exAxeDrops[0]);
+        }
+
+        // Need to add the other things, but there's gotta be a better way to do this...
+        // Shears, Hoes, Burning, etc...
 
         // I need to come up with how to tell what kind of tool we're using.
         if (tool != null)
         {
-            return RandomItemStack(ExBedrock.exHandDrops[1]);
+            return RandomItemStack(ExBedrock.exToolDrops[1]);
 //            return new ItemStack (ExBedrock.exHandDrops[1][Math.rint(ExBedrock.exHandDrops[1].length)])
         }
 
@@ -79,6 +118,9 @@ public class BedrockListener
     // Takes an array of Item and returns a random ItemStack from it.
     public ItemStack RandomItemStack(Item[] iArray)
     {
+        if (iArray.length == 0)
+            return null;
+
         // does this go here or someplace more central?
         Random r = new Random();
 
