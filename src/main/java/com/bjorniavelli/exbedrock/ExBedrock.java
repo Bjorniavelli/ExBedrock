@@ -16,14 +16,19 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.io.File;
+import java.util.Set;
 import java.util.logging.Logger;
 
 @Mod(modid = ExBedrock.MODID, name = ExBedrock.NAME, version = ExBedrock.VERSION)
 public class ExBedrock
 {
+    // these all need to go to a data class.
+
     public static final String MODID = "exbedrock";
     public static final String NAME = "Ex Bedrock";
     public static final String VERSION = "1.9-0.0.1";
+
+    public static String configDropCategoryPrefix = "exDrop";
 
     @Mod.Instance
     public static ExBedrock instance;
@@ -31,6 +36,8 @@ public class ExBedrock
     public static File configFile;
 
     public static Block exBlock;
+
+    public static Set<ExDrop> exDrops;
 
     // Drop Table
     // Can I do this with a key/value pair system of my own??
@@ -51,6 +58,15 @@ public class ExBedrock
         exBlock = Block.getBlockFromName(exBlockString);
 
         readDrops (config);
+
+        Set<String> categories = config.getCategoryNames();
+        for (String s : categories)
+        {
+            if (s.startsWith(configDropCategoryPrefix))
+            {
+                ExDrop.exDrops.add(new ExDrop(config.getCategory(s)));
+            }
+        }
 
         config.save();
     }
