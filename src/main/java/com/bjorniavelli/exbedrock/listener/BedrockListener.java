@@ -2,6 +2,7 @@ package com.bjorniavelli.exbedrock.listener;
 
 import com.bjorniavelli.exbedrock.ExBedrock;
 import com.bjorniavelli.exbedrock.ExDrop;
+import com.bjorniavelli.exbedrock.data.ExData;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -46,14 +47,14 @@ public class BedrockListener
 
         if (tool == null)
         {
-            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops("Unnamed", 0)));
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops(ExData.UNNAMED_TOOL, ExData.EMPTY_HAND)));
             return;
         }
 
         if (!tool.getItem().isItemTool(tool))
         {
             // Include logic to check for common tools, but for now...
-            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops("Unnamed", 1)));
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops(ExData.UNNAMED_TOOL, ExData.NON_TOOL)));
         }
     }
 
