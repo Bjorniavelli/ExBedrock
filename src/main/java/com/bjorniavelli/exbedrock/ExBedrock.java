@@ -36,7 +36,7 @@ public class ExBedrock
         Configuration config = new Configuration (e.getSuggestedConfigurationFile());
         config.load();
 
-        String exBlockString = config.get("General", "ExBlock", ExData.DEFAULT_EX_BLOCK, "Which block gets pulled from?").getString();
+        String exBlockString = config.get("general", "ExBlock", ExData.DEFAULT_EX_BLOCK, "Which block gets pulled from?").getString();
         exBlock = Block.getBlockFromName(exBlockString);
         if (exBlock == null)
         {
@@ -50,7 +50,7 @@ public class ExBedrock
         // We're just going to require tool, pickaxe, axe, and shovel.  Otherwise we can't apply defaults easily.
         // 'Tool' is required, and omitted.  It's how we start off, but the modpack maker can make it empty.
         // But for example, they might want railcraft stuff to come from crowbars, or aspects from Thaumcraft wands.
-        String[] exDropToolTypes = config.getStringList ("General", "ToolTypes", new String[]{}, "Aside from Unnamed, Axe, Pickaxe, and Shovel.  Types of tools to check for valid drop lists for.  Each needs its own category.");
+        String[] exDropToolTypes = config.getStringList ("ToolTypes", "general", new String[]{}, "Aside from Unnamed, Axe, Pickaxe, and Shovel.  Types of tools to check for valid drop lists for.  Each needs its own category.");
 
         ExDrop[] exUnnamedDrops = new ExDrop[ExDrop.MAX_HARDNESS_LEVEL];
 

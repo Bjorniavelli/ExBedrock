@@ -11,7 +11,7 @@ public class ExData
     public static final String VERSION = "1.9-0.0.1";
 
     // String Defaults
-    public static final String DEFAULT_EX_BLOCK = Blocks.bedrock.getUnlocalizedName();
+    public static final String DEFAULT_EX_BLOCK = "minecraft:bedrock";
     public static final String UNNAMED_TOOL = "unnamed";
     public static final String PICKAXE_TOOL = "pickaxe";
     public static final String AXE_TOOL = "axe";
@@ -32,7 +32,7 @@ public class ExData
     public static final int WATER_RANK = 2;
 
     // Tool ranks
- s   public static final int WOOD_RANK = 0;
+    public static final int WOOD_RANK = 0;
     public static final int STONE_RANK = 1;
     public static final int IRON_RANK = 2;
     public static final int DIAMOND_RANK = 3;
@@ -43,39 +43,43 @@ public class ExData
     // Config Defaults
     public static final String[] EMPTY_HAND_DEFAULT_DROPS = new String[]
             {
-                    Items.stick.getUnlocalizedName()
+                    "minecraft:stick"
             };
     public static final String[] EMPTY_HAND_NON_TOOL_DROPS = new String[]
             {
-                    Blocks.planks.getUnlocalizedName(),
-                    Blocks.crafting_table.getUnlocalizedName()
+                    "minecraft:planks",
+                    "minecraft:planks 1 1",
+                    "minecraft:planks 1 2",
+                    "minecraft:planks 1 3",
+                    "minecraft:planks 1 4",
+                    "minecraft:planks 1 5"
             };
     public static final String[] SHEAR_DEFAULT_DROPS = new String[]
             {
-                    Items.string.getUnlocalizedName()
+                    "minecraft:string"
             };
     public static final String[] FISHING_ROD_DEFAULT_DROPS = new String[]
             {
-                    Blocks.waterlily.getUnlocalizedName()
+                    "minecraft:waterlily"
             };
     public static final String[] HOE_DEFAULT_DROPS = new String[] // Would like to have tiers... but oh well.
             {
-                    Items.wheat_seeds.getUnlocalizedName()
+                    "minecraft:wheat_seeds"
             };
     public static final String[] BUCKET_DEFAULT_DROPS = new String[]
             {
-                    Items.water_bucket.getUnlocalizedName()
+                    "minecraft:water_bucket"
             };
     // public static final String[] COMPASS_DEFAULT_DROPS = new String[] {}; // Low priority, drop filled in maps from other worlds.
 
     // Environmental Drops
     public static final String[] BLAST_DEFAULT_DROPS = new String[]
             {
-                    Blocks.tnt.getUnlocalizedName() // Eh... this is just a placeholder
+                    "minecraft:tnt" // Eh... this is just a placeholder
             };
     public static final String[] BURN_DEFAULT_DROPS = new String[]
             {
-                    Items.nether_wart.getUnlocalizedName()
+                    "minecraft:nether_wart"
             };
     public static final String[] WATER_DEFAULT_DROPS = new String[]
             {
@@ -86,57 +90,59 @@ public class ExData
     // Pickaxe Drops
     public static final String[] PICKAXE_WOOD_DEFAULT_DROPS = new String[]
             {
-                    Blocks.cobblestone.getUnlocalizedName()
+                    "minecraft:cobblestone"
             };
     public static final String[] PICKAXE_STONE_DEFAULT_DROPS = new String[]
             {
-                    Blocks.iron_ore.getUnlocalizedName()
+                    "minecraft:iron_ore"
             };
     public static final String[] PICKAXE_IRON_DEFAULT_DROPS = new String[]
             {
-                    Blocks.diamond_ore.getUnlocalizedName()
+                    "minecraft:gold_ore"
             };
     public static final String[] PICKAXE_DIAMOND_DEFAULT_DROPS = new String[]
             {
-                    Blocks.obsidian.getUnlocalizedName()
+                    "minecraft:diamond_ore"
             };
 
     // Axe Drops
     public static final String[] AXE_WOOD_DEFAULT_DROPS = new String[]
             {
-                    Blocks.log.getUnlocalizedName()
+                    "minecraft:planks:3",
+                    "minecraft:log"
             };
     public static final String[] AXE_STONE_DEFAULT_DROPS = new String[]
             {
-                    Blocks.ice.getUnlocalizedName()
+                    "minecraft:ice"
             };
     public static final String[] AXE_IRON_DEFAULT_DROPS = new String[]
             {
-                    Blocks.sapling.getUnlocalizedName()
+                    "minecraft:sapling"
             };
     public static final String[] AXE_DIAMOND_DEFAULT_DROPS = new String[]
             {
-                    Blocks.reeds.getUnlocalizedName()
+                    "minecraft:reeds" // eh?
             };
 
     // Shovel Drops
     public static final String[] SHOVEL_WOOD_DEFAULT_DROPS = new String[]
             {
-                    Blocks.dirt.getUnlocalizedName()
+                    "minecraft:dirt"
             };
     public static final String[] SHOVEL_STONE_DEFAULT_DROPS = new String[]
             {
-                    Blocks.sand.getUnlocalizedName(),
-                    Blocks.gravel.getUnlocalizedName()
+                    "minecraft:sand",
+                    "minecraft:gravel"
             };
     public static final String[] SHOVEL_IRON_DEFAULT_DROPS = new String[]
             {
-                    Blocks.soul_sand.getUnlocalizedName()
+                    "minecraft:soul_sand"
             };
     public static final String[] SHOVEL_DIAMOND_DEFAULT_DROPS = new String[]
             {
-                    Blocks.grass.getUnlocalizedName(),
-                    Blocks.mycelium.getUnlocalizedName()
+                    "minecraft:grass",
+                    "minecraft:mycelium",
+                    "minecraft:podzoi:2"
                     // Podzoi?
             };
 }

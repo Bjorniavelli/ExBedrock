@@ -62,7 +62,7 @@ public class BedrockListener
     // Takes an exDrop and returns a random ItemStack from it.
     public ItemStack RandomItemStack(ExDrop e)
     {
-        ArrayList<Item> iArray = e.drops;
+        ArrayList<ItemStack> iArray = e.drops;
 
         if (iArray.isEmpty())
             return null;
@@ -71,9 +71,14 @@ public class BedrockListener
         Random r = new Random();
 
         int index = r.nextInt(iArray.size());
-        Item i = iArray.get(index);
+//        Item i = iArray.get(index);
+        ItemStack ret = iArray.get(index).copy();
 
-        return new ItemStack(i, 1);
+        FMLLog.info ("EX BEDROCK: stacksize: " + ret.stackSize);
+        if (ret.stackSize > 1)
+            ret.stackSize = r.nextInt(ret.stackSize) + 1;
+
+        return ret;
     }
 
     public void spawnAtPlayer (EntityPlayer player, ItemStack iStack)
