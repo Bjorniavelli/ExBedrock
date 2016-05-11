@@ -44,8 +44,6 @@ public class ExBedrock
             exBlock = Block.getBlockFromName(ExData.DEFAULT_EX_BLOCK);
         }
 
-
-
         // We're still going to try for dynamic...
         // We're just going to require tool, pickaxe, axe, and shovel.  Otherwise we can't apply defaults easily.
         // 'Tool' is required, and omitted.  It's how we start off, but the modpack maker can make it empty.
