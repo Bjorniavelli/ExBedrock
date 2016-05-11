@@ -54,6 +54,13 @@ public class ExBedrock
 
         ExDrop[] exUnnamedDrops = new ExDrop[ExDrop.MAX_HARDNESS_LEVEL];
 
+        // I'd like to add something like:
+        // string randomType = config.getString(ExData.RANDOM_TYPE_CONFIG_NAME, ExData.UNNAMED_TOOL, "Uniform", "What kind of distribution of drops", limiters to values?);
+        // And then the new ExDrops include that in their constructors
+        // And then in ExDrop, we tell it to Random.nextInt(array.size * 10000), and peg it appropriately
+        // We could do uniform, standard dist(?), log2, log10, flat
+        // uniform would be 1-1-1-1-1, standard would be ~ 1-3-5-3-1, log2 would be ~ 16-8-4-2-1, log10 would be ~ 10000-1000-100-10-1, flat would be 5-4-3-2-1, etc.
+
         // All of these new String[]{}'s need to go into variables in a data class.
         // Unnamed and the other cat names should go to a data variable?
         // Maybe that "0" should just be the name of the hand for these generic tools?

@@ -44,7 +44,7 @@ public class ExDrop
             // [1]: number // Should honestly just be 1, but how about between 1 and this number?  Eventually?
             // [2]: Metadata/blockstate
             // [3]: Any NBT data (Unimplemented)
-            // [4+]: ignore
+            // [4+]: ignore?
             String[] sections = s.split(" ");
             FMLLog.info("Ex Bedrock, Processing: " + s);
 

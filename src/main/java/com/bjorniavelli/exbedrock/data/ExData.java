@@ -40,6 +40,11 @@ public class ExData
     // Should we seperate out environmental things?
     // Probably...
 
+    // START HERE!
+    // Determine a realistic distribution of things for vanilla skyblocking
+    // THEN
+    // Change the thing where it's not sided appropriately.
+
     // Config Defaults
     public static final String[] EMPTY_HAND_DEFAULT_DROPS = new String[]
             {

@@ -9,6 +9,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.NetworkManager;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -29,6 +30,10 @@ public class BedrockListener
     public void onPlayerInteract (PlayerInteractEvent.LeftClickBlock e)
     {
         BlockPos target = e.getPos();
+
+        if (e.getWorld().isRemote)
+            return;
+
         IBlockState state = e.getWorld().getBlockState(target);
         Block b = state.getBlock();
         if (b != ExBedrock.exBlock)
