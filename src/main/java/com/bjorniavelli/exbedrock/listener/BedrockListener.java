@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.NetworkManager;
@@ -58,9 +59,10 @@ public class BedrockListener
             return;
         }
 
-        // START HERE!
-        // Need to actually, you know, check for tools...
-        // Also, we need to add other tools to the config interpreter.
+        // I think we might need to re-do these but with...
+        // a config for what tools are in what categories, otherwise
+        // we run into a problem with hoes.  Plus, maybe modpack makers want
+        // to allow custom shears or disallow vanilla shears.
         if (!tool.getItem().isItemTool(tool))
         {
             spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.UNNAMED_TOOL).get(ExData.NON_TOOL.index)));
@@ -68,6 +70,65 @@ public class BedrockListener
 //            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops(ExData.UNNAMED_TOOL, ExData.NON_TOOL)));
             return;
         }
+
+        if (tool.getItem() == Items.shears)
+        {
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.UNNAMED_TOOL).get(ExData.SHEAR.index)));
+            return;
+        }
+
+        // forgot to add this, but last test it gave nothing.
+        if (tool.getItem() == Items.fishing_rod)
+        {
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.UNNAMED_TOOL).get(ExData.FISHING_ROD.index)));
+            return;
+        }
+
+        // Gives fishing_rod rewards
+        if (tool.getItem() == Items.wooden_hoe ||
+                tool.getItem() == Items.stone_hoe ||
+                tool.getItem() == Items.iron_hoe ||
+                tool.getItem() == Items.golden_hoe ||
+                tool.getItem() == Items.diamond_hoe)
+        {
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.UNNAMED_TOOL).get(ExData.HOE.index)));
+            return;
+        }
+
+        // Gives nothing
+        if (tool.getItem() == Items.bucket)
+        {
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.UNNAMED_TOOL).get(ExData.BUCKET.index)));
+            return;
+        }
+
+        if (tool.getItem().getToolClasses(tool).contains("pickaxe"))
+        {
+            // Extra checks for tool ranks.
+            // should be just 'for(int i = 0; i < ExDrops.get(ExData.PICKAXE_TOOL).size();...
+            // wait, do ArrayLists' 'size' return highest index, or number in there?
+            // Regardless, could we just do an iterator of some sort?
+            // A switch statement?
+            // Also might have problems with mattocks that are shovel and axe.
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.PICKAXE_TOOL).get(ExData.WOOD_RANK)));
+            return;
+        }
+        if (tool.getItem().getToolClasses(tool).contains("axe"))
+        {
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.AXE_TOOL).get(ExData.WOOD_RANK)));
+            return;
+        }
+
+        if (tool.getItem().getToolClasses(tool).contains("shovel"))
+        {
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.SHOVEL_TOOL).get(ExData.WOOD_RANK)));
+            return;
+        }
+
+        // Need to handle the dynamic tools.
+        // both adding them to the drop table as well as in here.
+
+        // Anything down here is a non-handled tool.
     }
 
 

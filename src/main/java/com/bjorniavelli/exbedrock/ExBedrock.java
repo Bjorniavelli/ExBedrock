@@ -73,6 +73,33 @@ public class ExBedrock
 //        configToExDrop(config, ExData.EMPTY_HAND);
         configToExDrop(config, ExData.EMPTY_HAND);
         configToExDrop(config, ExData.NON_TOOL);
+        configToExDrop(config, ExData.SHEAR);
+        configToExDrop(config, ExData.FISHING_ROD);
+        configToExDrop(config, ExData.HOE);
+        configToExDrop(config, ExData.BUCKET);
+
+        exDrops.put(ExData.ENVIRONMENTAL, new ArrayList<ExDrop>());
+        configToExDrop(config, ExData.BLAST);
+        configToExDrop(config, ExData.BURN);
+        configToExDrop(config, ExData.WATER);
+
+        exDrops.put(ExData.PICKAXE_TOOL, new ArrayList<ExDrop>());
+        configToExDrop(config, ExData.WOOD_PICKAXE);
+        configToExDrop(config, ExData.STONE_PICKAXE);
+        configToExDrop(config, ExData.IRON_PICKAXE);
+        configToExDrop(config, ExData.DIAMOND_PICKAXE);
+
+        exDrops.put(ExData.AXE_TOOL, new ArrayList<ExDrop>());
+        configToExDrop(config, ExData.WOOD_AXE);
+        configToExDrop(config, ExData.STONE_AXE);
+        configToExDrop(config, ExData.IRON_AXE);
+        configToExDrop(config, ExData.DIAMOND_AXE);
+
+        exDrops.put(ExData.SHOVEL_TOOL, new ArrayList<ExDrop>());
+        configToExDrop(config, ExData.WOOD_SHOVEL);
+        configToExDrop(config, ExData.STONE_SHOVEL);
+        configToExDrop(config, ExData.IRON_SHOVEL);
+        configToExDrop(config, ExData.DIAMOND_SHOVEL);
 
 //        exDrops.put(ExData.UNNAMED_TOOL, exUnnamedDrops);
 
