@@ -1,5 +1,6 @@
 package com.bjorniavelli.exbedrock;
 
+import com.bjorniavelli.exbedrock.data.DefaultConfigData;
 import com.bjorniavelli.exbedrock.data.ExData;
 import com.bjorniavelli.exbedrock.listener.BedrockListener;
 import net.minecraft.block.Block;
@@ -12,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Mod(modid = ExData.MODID, name = ExData.NAME, version = ExData.VERSION)
@@ -27,7 +29,8 @@ public class ExBedrock
     public static Block exBlock;
 
     // Drop Table
-    public static HashMap<String, ExDrop[]> exDrops = new HashMap<String, ExDrop[]>();
+    // Is this overly complex?
+    public static HashMap<String, ArrayList<ExDrop>> exDrops = new HashMap<String, ArrayList<ExDrop>>();
 
     @Mod.EventHandler
     public void preInit (FMLPreInitializationEvent e)
@@ -50,8 +53,9 @@ public class ExBedrock
         // But for example, they might want railcraft stuff to come from crowbars, or aspects from Thaumcraft wands.
         String[] exDropToolTypes = config.getStringList ("ToolTypes", "general", new String[]{}, "Aside from Unnamed, Axe, Pickaxe, and Shovel.  Types of tools to check for valid drop lists for.  Each needs its own category.");
 
-        ExDrop[] exUnnamedDrops = new ExDrop[ExDrop.MAX_HARDNESS_LEVEL];
+//        ExDrop[] exUnnamedDrops = new ExDrop[ExDrop.MAX_HARDNESS_LEVEL];
 
+        exDrops.put(ExData.UNNAMED_TOOL, new ArrayList<ExDrop>());
         // I'd like to add something like:
         // string randomType = config.getString(ExData.RANDOM_TYPE_CONFIG_NAME, ExData.UNNAMED_TOOL, "Uniform", "What kind of distribution of drops", limiters to values?);
         // And then the new ExDrops include that in their constructors
@@ -62,10 +66,15 @@ public class ExBedrock
         // All of these new String[]{}'s need to go into variables in a data class.
         // Unnamed and the other cat names should go to a data variable?
         // Maybe that "0" should just be the name of the hand for these generic tools?
-        exUnnamedDrops[0] = new ExDrop(ExData.EMPTY_HAND, ExData.UNNAMED_TOOL, config.getStringList("0", ExData.UNNAMED_TOOL, ExData.EMPTY_HAND_DEFAULT_DROPS, "Empty hand"));
-        exUnnamedDrops[1] = new ExDrop(ExData.NON_TOOL, ExData.UNNAMED_TOOL, config.getStringList("1", ExData.UNNAMED_TOOL, ExData.EMPTY_HAND_NON_TOOL_DROPS, "Non-tool, unempty hand"));
+//        exUnnamedDrops[ExData.EMPTY_HAND] = new ExDrop(ExData.EMPTY_HAND, ExData.UNNAMED_TOOL, config.getStringList("" + ExData.EMPTY_HAND, ExData.UNNAMED_TOOL, ExData.EMPTY_HAND_DEFAULT_DROPS, "Empty hand"));
+//        exUnnamedDrops[ExData.NON_TOOL] = new ExDrop(ExData.NON_TOOL, ExData.UNNAMED_TOOL, config.getStringList("" + ExData.NON_TOOL, ExData.UNNAMED_TOOL, ExData.EMPTY_HAND_NON_TOOL_DROPS, "Non-tool, unempty hand"));
+//        exUnnamedDrops[ExData.SHEAR] = new ExDrop(ExData.SHEAR, ExData.UNNAMED_TOOL, config.getStringList("" + ExData.SHEAR, ExData.UNNAMED_TOOL, ExData.SHEAR_DEFAULT_DROPS, "Drops from using a Shear"));
 
-        exDrops.put(ExData.UNNAMED_TOOL, exUnnamedDrops);
+//        configToExDrop(config, ExData.EMPTY_HAND);
+        configToExDrop(config, ExData.EMPTY_HAND);
+        configToExDrop(config, ExData.NON_TOOL);
+
+//        exDrops.put(ExData.UNNAMED_TOOL, exUnnamedDrops);
 
         for (String toolName : exDropToolTypes)
         {
@@ -84,13 +93,42 @@ public class ExBedrock
         MinecraftForge.EVENT_BUS.register(new BedrockListener());
     }
 
+    public static void configToExDrop(Configuration config, DefaultConfigData data)
+    {
+        // If there's not any actual data, let's return null
+        if (data == null)
+            return;
+
+        // Grab everything from the DefaultConfig,
+        // Try to read it from the config, but if not, save the default.
+        ExDrop ret = new ExDrop(
+                data.index,
+                data.category,
+                config.getStringList("" + data.index, data.category, data.drops, data.comment)
+        );
+
+        // If there are no drops, let's skip it.
+        // This means we have to .add(index, data), not .add(data)
+        if (ret.drops.size() == 0)
+            return;
+
+        // This bit makes the code less reusable because we're directly referring to exDrops
+        exDrops.get(data.category).add(ret.hardnessLevel, ret);
+    }
+
     public static ExDrop getExDrops(String toolType, int hLevel)
     {
-        ExDrop[] temp = exDrops.get(toolType);
+        ArrayList<ExDrop> t = exDrops.get(toolType);
 
-        if (temp != null && temp.length >= hLevel)
-            return temp[hLevel];
+        if (t.get(hLevel) != null)
+            return t.get(hLevel);
         else
             return null;
+//        ExDrop[] temp = exDrops.get(toolType);
+//
+//        if (temp != null && temp.length >= hLevel)
+//            return temp[hLevel];
+//        else
+//            return null;
     }
 }

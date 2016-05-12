@@ -17,10 +17,32 @@ public class ExData
     public static final String AXE_TOOL = "axe";
     public static final String SHOVEL_TOOL = "shovel";
 
+    // should these go into DefaultConfigData?
+    public static final DefaultConfigData EMPTY_HAND = new DefaultConfigData(
+            0,
+            "Drops from an empty hand",
+            ExData.UNNAMED_TOOL,
+            new String[]
+                    {
+                            "minecraft:stick"
+                    }
+    );
+
+    public static final DefaultConfigData NON_TOOL = new DefaultConfigData(
+            1,
+            "Drops from a non_tool item",
+            ExData.UNNAMED_TOOL,
+            new String[]
+                    {
+                            "minecraft:planks",
+                            "minecraft:coal"
+                    }
+    );
+
     // Non-tool ranks
     // Do we want an enum for this?  Seems overly complex.
-    public static final int EMPTY_HAND = 0;
-    public static final int NON_TOOL = 1;
+//    public static final int EMPTY_HAND = 0;
+//    public static final int NON_TOOL = 1;
     public static final int SHEAR = 2;
     public static final int FISHING_ROD = 3;
     public static final int HOE = 4;

@@ -52,14 +52,21 @@ public class BedrockListener
 
         if (tool == null)
         {
-            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops(ExData.UNNAMED_TOOL, ExData.EMPTY_HAND)));
+            // This seems cumbersome.
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.UNNAMED_TOOL).get(ExData.EMPTY_HAND.index)));
+//            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops(ExData.UNNAMED_TOOL, ExData.EMPTY_HAND.)));
             return;
         }
 
+        // START HERE!
+        // Need to actually, you know, check for tools...
+        // Also, we need to add other tools to the config interpreter.
         if (!tool.getItem().isItemTool(tool))
         {
+            spawnAtPlayer(player, RandomItemStack(ExBedrock.exDrops.get(ExData.UNNAMED_TOOL).get(ExData.NON_TOOL.index)));
             // Include logic to check for common tools, but for now...
-            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops(ExData.UNNAMED_TOOL, ExData.NON_TOOL)));
+//            spawnAtPlayer(player, RandomItemStack(ExBedrock.getExDrops(ExData.UNNAMED_TOOL, ExData.NON_TOOL)));
+            return;
         }
     }
 
